@@ -1,19 +1,23 @@
 class Usuario:
-    def _init_(self, rol, username):
+    def __init__(self, rol, username):
         self.user = username
         self.rol = rol
+    
     def getUser(self):
         return self.user
+    
     def getRol(self):
         return self.rol
-    def setUser(self,user):
-        self.user = user
-    def setRol(self,rol):
-        self.rol= rol
-    def verUsuario(self):
-        print('El usuario es: ', self.user, ' con el rol de ', self.rol)
-        
     
+    def setUser(self, user):
+        self.user = user
+    
+    def setRol(self, rol):
+        self.rol = rol
+    
+    def verUsuario(self):
+        print('El usuario es:', self.user, 'con el rol de', self.rol)
+
 
 
 
