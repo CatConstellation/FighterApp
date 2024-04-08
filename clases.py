@@ -16,6 +16,4 @@ class Usuario:
     
 
 
-user1 = Usuario('Administrador', 'Admin1')
-
 
