@@ -1,0 +1,2 @@
+def verUsuario(self):
+        print('El usuario es:', self.user, 'con el rol de', self.rol)
