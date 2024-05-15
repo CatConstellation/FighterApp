@@ -20,4 +20,4 @@ app.include_router(noticia_router, prefix="/api/v1")
 # Endpoint para servir el archivo index.html
 @app.get("/")
 async def get_index():
-    return FileResponse("src/views/crearnoticia.html")
+    return FileResponse("src/views/eliminarnoticia.html")
