@@ -1,11 +1,22 @@
 from fastapi import APIRouter, Depends, HTTPException
-from src.models import Noticia
-from src.models.schemas import  NoticiaDelete
-from src.models.noticiamodel import eliminar_noticia
+from src.models import Noticia, get_crearnoticia
+from src.models.schemas import NoticiaCreate, NoticiaDelete
+from src.models.noticiamodel import crear_noticia, eliminar_noticia
 from sqlalchemy.orm import Session
 from conexionbd import SessionLocal
 
 router = APIRouter()
+
+
+@router.get("/")
+async def get_index():
+    """
+    Retrieves data for creating a new noticia. (Optional)
+
+    Returns:
+        Data for the noticia creation form (implementation depends on get_crearnoticia function).
+    """
+    return get_crearnoticia()
 
 @router.delete("/{noticia_id}", status_code=204)
 async def delete_noticia(noticia_id: int, db: Session = Depends(get_db)):
