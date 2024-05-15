@@ -15,13 +15,14 @@
         <div class="content">
             <p>¿Estás seguro de que deseas eliminar esta noticia?</p>
             <div class="noticia-info">
-                <img src="/static/images/noticia.jpg" alt="Noticia Image">
+                <img src="/static/images/noticia.jpg" alt="Noticia Image">   
+                <!-- ruta de las imagenes de las noticias -->
                 <div class="noticia-details">
                     <h2>Título de la Noticia</h2>
                     <p>Cuerpo de la noticia...</p>
                 </div>
                 <button class="delete-button" title="Eliminar Noticia">
-                    <img src="/static/images/trash-icon.png" alt="Trash Icon">
+                    <img src="src/views/basura.png" alt="Trash Icon">
                 </button>
             </div>
             <form id="eliminar-noticia-form" action="/api/v1/noticias/{{noticia_id}}" method="post" style="display: none;">
