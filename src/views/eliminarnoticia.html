@@ -21,50 +21,12 @@
           <h2>Título de la Noticia</h2>
           <p>Cuerpo de la noticia...</p>
         </div>
-        <button class="delete-button" title="Eliminar Noticia">
-          <img src="src/views/basura.png" alt="Trash Icon">
-        </button>
       </div>
-      <form id="eliminar-noticia-form" action="/api/v1/noticias/{{noticia_id}}" method="DELETE" style="display: none;">
-        <input type="hidden" name="_method" value="delete">
-        <button type="submit">Eliminar</button>
+      <form id="eliminar-noticia-form" action="/api/v1/noticias/{{ noticia_id }}" method="DELETE">
+        <button type="submit">Eliminar Noticia</button>
+        <a href="/"><button type="button">Cancelar</button></a>
       </form>
-      <a href="/"><button>Cancelar</button></a>
-    </div>
+      <script src="/static/js/script.js"></script>  </div>
   </div>
-  <script src="/static/js/react-scripts.js"></script>
-  <script>
-    const deleteButton = document.querySelector('.delete-button');
-    const eliminarNoticiaForm = document.getElementById('eliminar-noticia-form');
-
-    deleteButton.addEventListener('click', () => {
-      const confirmDelete = confirm("¿Está seguro de eliminar esta noticia?");
-      if (confirmDelete) {
-        // Fetch API request to delete the noticia
-        fetch(`/api/v1/noticias/{{noticia_id}}`, {
-          method: 'DELETE',
-          headers: {
-            'Content-Type': 'application/json'
-          }
-        })
-        .then(response => response.json())
-        .then(data => {
-          // Handle the response from the backend
-          if (data.message === 'Noticia eliminada correctamente') {
-            // Deletion successful
-            alert('Noticia eliminada con éxito!');
-            // (Optionally, redirect or update the page)
-          } else {
-            // Deletion failed
-            alert('Error al eliminar la noticia: ' + data.detail);
-          }
-        })
-        .catch(error => {
-          console.error('Error:', error);
-          alert('Error inesperado al eliminar la noticia. Por favor vuelva a intentar');
-        });
-      }
-    });
-  </script>
 </body>
 </html>
