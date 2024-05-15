@@ -1,5 +1,9 @@
-from fastapi import APIRouter
-from src.models.noticiamodel import get_eliminarnoticia
+from fastapi import APIRouter, Depends, HTTPException
+from src.models import Noticia
+from src.models.schemas import  NoticiaDelete
+from src.models.noticiamodel import eliminar_noticia
+from sqlalchemy.orm import Session
+from conexionbd import SessionLocal
 
 router = APIRouter()
 
