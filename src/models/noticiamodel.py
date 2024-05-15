@@ -3,9 +3,6 @@ from .noticia import Noticia
 from .schemas import NoticiaDelete
 from fastapi.responses import FileResponse
 
-def get_eliminarnoticia():
-    return FileResponse("src/views/eliminarnoticia.html")
-
 def eliminar_noticia(db: Session, noticia_id: int) -> bool:
     """Deletes a noticia from the database by its ID.
 
