@@ -1,5 +1,5 @@
 from fastapi import APIRouter
-from src.models import get_eliminarnoticia
+from src.models.noticiamodel import get_eliminarnoticia
 
 router = APIRouter()
 
