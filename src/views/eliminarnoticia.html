@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eliminar Noticia</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Eliminar Noticia</h1>
+            <a href="/"><img src="/static/images/logo.png" alt="Logo"></a>
+        </div>
+        <div class="content">
+            <p>¿Estás seguro de que deseas eliminar esta noticia?</p>
+            <div class="noticia-info">
+                <img src="/static/images/noticia.jpg" alt="Noticia Image">
+                <div class="noticia-details">
+                    <h2>Título de la Noticia</h2>
+                    <p>Cuerpo de la noticia...</p>
+                </div>
+                <button class="delete-button" title="Eliminar Noticia">
+                    <img src="/static/images/trash-icon.png" alt="Trash Icon">
+                </button>
+            </div>
+            <form id="eliminar-noticia-form" action="/api/v1/noticias/{{noticia_id}}" method="post" style="display: none;">
+                <input type="hidden" name="_method" value="delete">
+                <button type="submit">Eliminar</button>
+            </form>
+            <a href="/"><button>Cancelar</button></a>
+        </div>
+    </div>
+    <script src="/static/js/react-scripts.js"></script>
+    <script>
+        const deleteButton = document.querySelector('.delete-button');
+        const eliminarNoticiaForm = document.getElementById('eliminar-noticia-form');
+
+        deleteButton.addEventListener('click', () => {
+            eliminarNoticiaForm.style.display = 'block'; // Show the hidden form
+        });
+    </script>
+</body>
+</html>
