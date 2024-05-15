@@ -23,7 +23,7 @@ def eliminar_noticia(db: Session, noticia_id: int) -> bool:
         return False
     except Exception as e:
         print(f"Error deleting noticia: {e}")
-        return False  # Indicate deletion failure
+        return False # Indicate deletion failure
 
 def get_noticias(db: Session):
     return db.query(Noticia).all()
