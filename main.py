@@ -20,4 +20,10 @@ app.include_router(noticia_router, prefix="/api/v1")
 # Endpoint para servir el archivo index.html
 @app.get("/")
 async def get_index():
-    return FileResponse("src/views/eliminarnoticia.html")
+  return FileResponse("src/views/crearnoticia.html")
+
+# Endpoint para eliminar noticias
+@app.get("/eliminar-noticia/{noticia_id}")
+async def eliminar_noticia_page(noticia_id: int):
+  # Opcional: Pasar noticia_id al template para pre-llenar datos
+  return FileResponse("src/views/eliminarnoticia.html")
