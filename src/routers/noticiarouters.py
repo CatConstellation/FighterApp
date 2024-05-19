@@ -3,7 +3,6 @@ from sqlalchemy.orm import Session
 from conexionbd import SessionLocal
 from src.models.noticiamodel import create_noticia as create_noticia_db
 from src.models.noticiamodel import get_noticias as get_noticias_db, get_noticia as get_noticia_db
-from src.models.noticiamodel import eliminar_noticia as eliminar_noticia_db
 from src.models.schemas import NoticiaCreate, NoticiaSchema
 
 router = APIRouter()
