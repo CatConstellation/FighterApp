@@ -4,30 +4,62 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Crear Noticia</title>
+    <!-- Incluir estilos CSS -->
     <link rel="stylesheet" href="/static/style.css">
+    <style>
+        .button-container {
+            display: flex;
+            gap: 10px; /* Espacio entre los botones */
+        }
+    </style>
 </head>
 <body>
     <div class="container">
-        <h1>[Encabezado de la noticia]</h1>
+        <h1>Crear Noticia</h1>
         <form id="noticia-form" action="/api/v1/noticias/" method="post" enctype="multipart/form-data">
             <div class="form-group">
-                <label for="titulo">Juego:</label>
-                <input type="text" id="titulo" name="titulo" required>
+                <label for="titulo">Título:</label>
+                <input type="text" id="titulo" name="titulo" required> <br><br>
             </div>
             <div class="form-group">
-                <label for="cuerpo">Contenido:</label>
-                <textarea id="cuerpo" name="cuerpo" rows="10" required></textarea>
+                <label for="cuerpo">Cuerpo:</label>
+                <textarea id="cuerpo" name="cuerpo" rows="4" required></textarea> <br><br>
             </div>
-            <div class="form-group image-upload">
-                <label for="archivo" class="image-upload-label">Agregar imagen (obligatorio)</label>
-                <input type="file" id="archivo" name="archivo" accept="image/*" required>
-                <img id="image-preview" src="" alt="Vista previa de la imagen" class="hidden">
+            <div class="form-group">
+                <label for="archivo">Archivo:</label>
+                <input type="file" id="archivo" name="archivo" accept="image/*" required> <br><br>
             </div>
-            <button type="submit" class="btn-submit">PUBLICAR!</button>
+            <div class="form-group">
+                <label for="fecha">Fecha:</label>
+                <input type="date" id="fecha" name="fecha" required> <br><br>
+            </div>
+            <button type="submit">PUBLICAR!</button>
+            <button type="button" onclick="redirectToNewsPage()">Volver</button>
         </form>
-        <button onclick="redirectToNoticiasPage()" class="btn-back">Volver</button>
     </div>
-    <script src="/static/scriptcrearnoticia.js"></script>
+    <script>
+        function redirectToNewsPage() {
+            window.location.href = "/";
+        }
+
+        document.getElementById('imagen').addEventListener('change', function() {
+            const preview = document.getElementById('imagen-preview');
+            const file = this.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    preview.src = e.target.result;
+                    preview.style.display = 'block';
+                };
+                reader.readAsDataURL(file);
+            } else {
+                preview.src = '#';
+                preview.style.display = 'none';
+            }
+        });
+    </script>
+    <script src="/static/scriptver.js"></script>
 </body>
 </html>
+
 
