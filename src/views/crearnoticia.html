@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear Noticia</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>[Encabezado de la noticia]</h1>
+        <form id="noticia-form" action="/api/v1/noticias/" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="titulo">Juego:</label>
+                <input type="text" id="titulo" name="titulo" required>
+            </div>
+            <div class="form-group">
+                <label for="cuerpo">Contenido:</label>
+                <textarea id="cuerpo" name="cuerpo" rows="10" required></textarea>
+            </div>
+            <div class="form-group image-upload">
+                <label for="archivo" class="image-upload-label">Agregar imagen (obligatorio)</label>
+                <input type="file" id="archivo" name="archivo" accept="image/*" required>
+                <img id="image-preview" src="" alt="Vista previa de la imagen" class="hidden">
+            </div>
+            <button type="submit" class="btn-submit">PUBLICAR!</button>
+        </form>
+        <button onclick="redirectToNoticiasPage()" class="btn-back">Volver</button>
+    </div>
+    <script src="/static/scriptcrearnoticia.js"></script>
+</body>
+</html>
+
