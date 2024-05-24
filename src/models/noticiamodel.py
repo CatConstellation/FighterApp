@@ -1,32 +1,40 @@
+import sys
+import os
+
+# Agregar la ruta del directorio raíz de tu proyecto al sys.path
+sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
+
 from sqlalchemy.orm import Session
-from .noticia import Noticia
-from .schemas import NoticiaDelete
+from fastapi import UploadFile
+from src.models.noticia import Noticia
+from src.models.schemas import NoticiaCreate
 from fastapi.responses import FileResponse
+import shutil
 
-def eliminar_noticia(db: Session, noticia_id: int) -> bool:
-    """Deletes a noticia from the database by its ID.
+def save_file(file: UploadFile, destination: str):
+    with open(destination, "wb") as buffer:
+        shutil.copyfileobj(file.file, buffer)
+    return destination
 
-    Args:
-        db: SQLAlchemy session object.
-        noticia_id: ID of the noticia to be deleted.
+def get_crearnoticia():
+    return FileResponse("src/views/crearnoticia.html")
 
-    Returns:
-        True if the noticia was deleted successfully, False otherwise.
-    """
-
-    try:
-        db_noticia = db.query(Noticia).filter(Noticia.id_noticia == noticia_id).first()
-        if db_noticia:
-            db.delete(db_noticia)
-            db.commit()
-            return True
-        return False
-    except Exception as e:
-        print(f"Error deleting noticia: {e}")
-        return False # Indicate deletion failure
+def create_noticia(db: Session, noticia: NoticiaCreate, file: UploadFile):
+    file_path = save_file(file, f"static/images/{file.filename}")
+    db_noticia = Noticia(id_noticia=noticia.id_noticia, titulo=noticia.titulo, cuerpo=noticia.cuerpo, 
+                         archivo=file_path, fecha=noticia.fecha)
+    db.add(db_noticia)
+    db.commit()
+    db.refresh(db_noticia)
+    return db_noticia
 
 def get_noticias(db: Session):
     return db.query(Noticia).all()
 
 def get_noticia(db: Session, noticia_id: int):
     return db.query(Noticia).filter(Noticia.id_noticia == noticia_id).first()
+
+def delete_noticia(db: Session, noticia_id: int):
+    db.query(Noticia).filter(Noticia.id_noticia == noticia_id).delete()
+    db.commit()
+
