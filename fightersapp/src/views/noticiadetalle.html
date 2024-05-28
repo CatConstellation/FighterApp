@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle de la Noticia</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <script src="/static/scriptdetalle.js" defer></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1 id="titulo"></h1>
+        </header>
+        <main>
+            <img id="imagen" src="" alt="Imagen de la noticia">
+            <p id="contenido"></p>
+            <p id="fecha"></p>
+            <a id="link" href="#" target="_blank">Para más información</a>
+            <br><br>
+            <button onclick="volver()">Volver</button>
+        </main>
+    </div>
+    <script>
+        function volver() {
+            window.location.href = "/noticiaver.html";
+        }
+    </script>
+</body>
+</html>
