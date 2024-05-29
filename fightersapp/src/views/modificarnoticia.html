@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Modificar Noticia</title>
     <!-- Incluir estilos CSS -->
-    <link rel="stylesheet" href="/static/style.css">
+    <link rel="stylesheet" href="/static/css/styles.css">
 </head>
 <body>
     <div class="container">
@@ -13,27 +13,31 @@
         <form id="noticia-form">
             <div class="form-group">
                 <label for="titulo">Título:</label>
-                <input type="text" id="titulo" name="titulo" required>
+                <input type="text" id="titulo" name="titulo" required> <br><br>
             </div>
             <div class="form-group">
                 <label for="cuerpo">Cuerpo:</label>
-                <textarea id="cuerpo" name="cuerpo" rows="4" required></textarea>
+                <textarea id="cuerpo" name="cuerpo" rows="4" required></textarea> <br><br>
             </div>
             <div class="form-group">
                 <label for="archivo">Imagen:</label>
                 <input type="file" id="archivo" name="archivo" accept="image/*">
-                <img id="imagen-noticia" src="" alt="Imagen de Noticia">
+                <img id="imagen-noticia" src="" alt="Imagen de Noticia"> <br><br>
             </div>
             <div class="form-group">
                 <label for="fecha">Fecha:</label>
-                <input type="date" id="fecha" name="fecha" required>
+                <input type="date" id="fecha" name="fecha" required> <br><br>
             </div>
             <button type="submit">Guardar Cambios</button>
+            <button type="button" onclick="redirectToNewsPage()">Volver</button>
         </form>
     </div>
     <!-- Incluir scripts JavaScript -->
-    <script src="/static/scripts.js"></script>
     <script>
+        function redirectToNewsPage() {
+            window.location.href = "/";
+        }
+
         // Función para obtener el valor de un parámetro en la URL
         function getQueryParam(param) {
             const urlParams = new URLSearchParams(window.location.search);
